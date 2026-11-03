@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" fill="none">
+  <!-- Dark-neutral editorial backdrop: works cleanly on both Warm Paper light cards and AMOLED dark cards -->
+  <rect width="800" height="500" fill="#111114"/>
+
+  <line x1="0" y1="88" x2="800" y2="88" stroke="#F2F0EB" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="0" y1="382" x2="800" y2="382" stroke="#F2F0EB" stroke-opacity="0.10" stroke-width="1"/>
+
+  <!-- Header row -->
+  <text x="44" y="42" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="0.08em">COMPUTER VISION · YOLOV12N</text>
+  <text x="44" y="68" fill="#F2F0EB" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.02em">Deteksi 5 Kelas APD Konstruksi</text>
+
+  <rect x="602" y="28" width="154" height="32" rx="16" fill="#6E2F36" stroke="#D8727E" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="679" y="49" text-anchor="middle" fill="#FAF9F6" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="13" font-weight="600">mAP@50 87.4%</text>
+
+  <!-- Left panel: clean bounding-box schematic (zero overlapping badges!) -->
+  <rect x="44" y="110" width="424" height="248" rx="12" fill="#0A0A0C" stroke="#F2F0EB" stroke-opacity="0.14" stroke-width="1"/>
+
+  <!-- Outer Person Box -->
+  <rect x="76" y="132" width="174" height="206" rx="8" stroke="#F2F0EB" stroke-opacity="0.7" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <rect x="76" y="132" width="112" height="24" rx="6" fill="#F2F0EB"/>
+  <text x="86" y="149" fill="#111114" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="12" font-weight="700">person 0.94</text>
+
+  <!-- Helmet Box (spaced cleanly below person badge) -->
+  <rect x="116" y="172" width="94" height="54" rx="6" stroke="#D8727E" stroke-width="2"/>
+  <rect x="116" y="172" width="94" height="22" rx="5" fill="#6E2F36"/>
+  <text x="125" y="187" fill="#FAF9F6" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="11" font-weight="600">helmet 0.92</text>
+  <path d="M138 218 C138 202, 188 202, 188 218 Z" fill="#D8727E" fill-opacity="0.35"/>
+
+  <!-- Vest Box -->
+  <rect x="108" y="240" width="110" height="82" rx="6" stroke="#A89F91" stroke-width="2"/>
+  <rect x="108" y="240" width="84" height="22" rx="5" fill="#2A2826"/>
+  <text x="117" y="255" fill="#F2F0EB" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="11" font-weight="600">vest 0.89</text>
+  <rect x="128" y="272" width="70" height="38" rx="4" fill="#A89F91" fill-opacity="0.22"/>
+
+  <!-- Distant Small Object Box -->
+  <rect x="284" y="156" width="156" height="182" rx="8" stroke="#A89F91" stroke-opacity="0.65" stroke-width="1.5"/>
+  <rect x="284" y="156" width="156" height="26" rx="6" fill="#1D1D22"/>
+  <text x="362" y="173" text-anchor="middle" fill="#D8727E" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="11.5" font-weight="600">SMALL OBJ · 78%</text>
+
+  <text x="302" y="214" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="0.05em">5 KELAS DETEKSI</text>
+  <text x="302" y="242" fill="#F2F0EB" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="13">• helmet</text>
+  <text x="302" y="264" fill="#D4D0C8" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="13">• no-helmet</text>
+  <text x="302" y="286" fill="#F2F0EB" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="13">• vest</text>
+  <text x="302" y="308" fill="#D4D0C8" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="13">• no-vest</text>
+  <text x="302" y="330" fill="#9E9A93" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="13">• person</text>
+
+  <!-- Right panel: concise 3-spec stack -->
+  <rect x="492" y="110" width="264" height="72" rx="10" fill="#18181C" stroke="#F2F0EB" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="514" y="138" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="0.05em">ARSITEKTUR</text>
+  <text x="514" y="166" fill="#F2F0EB" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="18" font-weight="600">YOLOv12n · 2,52M</text>
+
+  <rect x="492" y="198" width="264" height="72" rx="10" fill="#18181C" stroke="#F2F0EB" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="514" y="226" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="0.05em">RESOLUSI &amp; GPU</text>
+  <text x="514" y="254" fill="#F2F0EB" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="18" font-weight="600">640×640 · Tesla T4</text>
+
+  <rect x="492" y="286" width="264" height="72" rx="10" fill="#18181C" stroke="#F2F0EB" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="514" y="314" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="0.05em">OPTIMAL F1-SCORE</text>
+  <text x="514" y="342" fill="#D8727E" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="18" font-weight="600">0.80 @ conf 0.539</text>
+
+  <!-- Bottom 3 KPI strips -->
+  <text x="44" y="420" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="0.06em">PEAK VAL mAP@50</text>
+  <text x="44" y="454" fill="#F2F0EB" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="26" font-weight="700" letter-spacing="-0.02em">87.41%</text>
+
+  <line x1="296" y1="406" x2="296" y2="464" stroke="#F2F0EB" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="328" y="420" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="0.06em">TEST SET mAP@50</text>
+  <text x="328" y="454" fill="#F2F0EB" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="26" font-weight="700" letter-spacing="-0.02em">68.92%</text>
+
+  <line x1="548" y1="406" x2="548" y2="464" stroke="#F2F0EB" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="580" y="420" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="0.06em">SMALL OBJECT</text>
+  <text x="580" y="454" fill="#D8727E" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="26" font-weight="700" letter-spacing="-0.02em">78.00%</text>
+</svg>

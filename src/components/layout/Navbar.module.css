@@ -1,0 +1,472 @@
+.headerWrapper {
+  position: sticky;
+  top: max(var(--space-4), env(safe-area-inset-top, 0px));
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--space-4);
+  pointer-events: none;
+}
+
+.navPill {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 60rem;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-nav);
+  overflow: hidden;
+  transform: scale(1);
+  transform-origin: top center;
+  transition:
+    max-width var(--duration-settle) var(--ease-spring),
+    padding var(--duration-settle) var(--ease-spring),
+    border-radius var(--duration-settle) var(--ease-spring),
+    transform var(--duration-settle) var(--ease-spring),
+    box-shadow 200ms ease,
+    border-color var(--duration-hover) ease;
+}
+
+.navPill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--glass-highlight-top);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.navPillScrolled {
+  box-shadow: var(--glass-shadow);
+  border-color: var(--glass-border-hover);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .navPill::before {
+    display: none;
+  }
+}
+
+.navPillCompact {
+  max-width: 13.5rem;
+  padding: var(--space-2) var(--space-3);
+  transform: scale(0.94);
+}
+
+.navTopBar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-height: var(--tap-target-min);
+}
+
+.leadingSpacer {
+  flex: 0 1 0%;
+  min-width: 0;
+  transition: flex-grow var(--duration-settle) var(--ease-spring);
+}
+
+.trailingSpacer {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.navPillCompact .leadingSpacer {
+  flex-grow: 1;
+}
+
+.brandGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap-target-min);
+  padding-right: var(--space-1);
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  transition: transform var(--duration-press) ease-out;
+}
+
+.brandGroup:active {
+  transform: scale(var(--scale-press));
+}
+
+.avatarProfile {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--glass-subtle-bg);
+  border: 1px solid var(--glass-subtle-border);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.avatarPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.brandName {
+  font-size: var(--text-body);
+  font-weight: 800;
+  color: var(--accent-ink);
+  letter-spacing: var(--tracking-title);
+  white-space: nowrap;
+}
+
+.navLinksDesktop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  max-width: 45rem;
+  opacity: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transform: translateX(0) scale(1);
+  transform-origin: right center;
+  transition:
+    max-width var(--duration-settle) var(--ease-spring),
+    opacity 200ms ease 40ms,
+    transform var(--duration-settle) var(--ease-spring);
+}
+
+.cmdTriggerBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--btn-h-md);
+  margin-left: var(--space-1);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-pill);
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-hover) ease,
+    background-color var(--duration-hover) ease,
+    color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.cmdTriggerBtn:hover {
+  color: var(--ink-strong);
+  border-color: var(--glass-subtle-border-hover);
+  background: var(--glass-subtle-bg-hover);
+}
+
+.cmdTriggerBtn:active {
+  transform: scale(var(--scale-press));
+}
+
+.cmdKbd {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 600;
+}
+
+.navLinksHidden {
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(var(--space-2)) scale(0.95);
+  pointer-events: none;
+  transition:
+    max-width var(--duration-settle) var(--ease-spring),
+    opacity 140ms ease,
+    transform var(--duration-settle) var(--ease-spring);
+}
+
+.desktopLocaleToggle,
+.desktopThemeToggle {
+  margin-left: var(--space-1);
+}
+
+.navLink,
+.navLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--btn-h-md);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  color: var(--ink-strong);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.navLink:hover,
+.navLinkBtn:hover {
+  background-color: var(--glass-hover-bg);
+}
+
+.navLink:active,
+.navLinkBtn:active {
+  background-color: var(--glass-active-bg);
+  transform: scale(var(--scale-press));
+}
+
+.contactPillBtn {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--btn-h-md);
+  margin-left: var(--space-1);
+  padding: 0 var(--space-4);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
+
+.mobileActionsGroup {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: 10.5rem;
+  opacity: 1;
+  overflow: hidden;
+  flex-shrink: 0;
+  transform: translateX(0) scale(1);
+  transform-origin: right center;
+  transition:
+    max-width var(--duration-settle) var(--ease-spring),
+    opacity 200ms ease 40ms,
+    transform var(--duration-settle) var(--ease-spring);
+}
+
+.collapseToggleBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-target-min);
+  height: var(--tap-target-min);
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--ink-strong);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background-color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.collapseToggleBtn:hover {
+  background: var(--glass-hover-bg);
+}
+
+.collapseToggleBtn:active {
+  background: var(--glass-active-bg);
+  transform: scale(var(--scale-press));
+}
+
+.toggleHiddenWhenCompact {
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(var(--space-2)) scale(0.95);
+  pointer-events: none;
+  transition:
+    max-width var(--duration-settle) var(--ease-spring),
+    opacity 140ms ease,
+    transform var(--duration-settle) var(--ease-spring);
+}
+
+.dropdownPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--glass-divider);
+  transform-origin: top right;
+  animation: dropdownMaterialize 240ms var(--ease-spring) both;
+}
+
+.dropdownPanelClosing {
+  pointer-events: none;
+  animation: dropdownDematerialize 180ms ease both;
+}
+
+@keyframes dropdownMaterialize {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes dropdownDematerialize {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
+/* Concentric inner radius inside 20px mobile nav shell: 12px (--radius-card-inner) */
+.dropdownLink,
+.dropdownActionBtn {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-card-inner);
+  border: none;
+  background: transparent;
+  color: var(--ink-strong);
+  font-size: var(--text-label);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-label);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.dropdownLink:hover,
+.dropdownActionBtn:hover {
+  background: var(--glass-hover-bg);
+}
+
+.dropdownLink:active,
+.dropdownActionBtn:active {
+  background: var(--glass-active-bg);
+  transform: scale(var(--scale-press));
+}
+
+.dropdownPrimaryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-2);
+  min-height: var(--tap-target-min);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--btn-primary-bg);
+  border: 1px solid var(--btn-primary-border);
+  color: var(--btn-primary-ink);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  transition:
+    background-color var(--duration-hover) ease,
+    border-color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.dropdownPrimaryBtn:hover {
+  background: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
+}
+
+.dropdownPrimaryBtn:active {
+  transform: scale(var(--scale-press));
+}
+
+@media (max-width: 960px) {
+  .navPill {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .navLink,
+  .navLinkBtn {
+    padding: 0 0.625rem;
+  }
+
+  .contactPillBtn {
+    padding: 0 0.875rem;
+  }
+
+  .cmdTriggerBtn {
+    padding: 0 var(--space-2);
+    min-width: var(--btn-h-md);
+    margin-left: 0;
+  }
+
+  .desktopLocaleToggle,
+  .desktopThemeToggle {
+    margin-left: 0;
+  }
+
+  .cmdKbd {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .navPill {
+    max-width: 24rem;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-nav);
+  }
+
+  .avatarProfile {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .brandName {
+    font-size: 0.95rem;
+  }
+
+  .navPillCompact {
+    max-width: 13.5rem;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-nav);
+    transform: scale(0.94);
+  }
+
+  .navLinksDesktop,
+  .navLinksHidden {
+    display: none;
+  }
+
+  .mobileActionsGroup {
+    display: inline-flex;
+  }
+
+  .collapseToggleBtn {
+    display: inline-flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navPill,
+  .navPillCompact,
+  .navLinksDesktop,
+  .navLinksHidden,
+  .mobileActionsGroup,
+  .toggleHiddenWhenCompact {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .navPill {
+    border-color: var(--ink-strong);
+  }
+}

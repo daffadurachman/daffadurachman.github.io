@@ -1,0 +1,170 @@
+.dockContainer {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: 95;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 200ms ease,
+    transform 240ms var(--ease-spring);
+  pointer-events: none;
+}
+
+.dockContainerHidden {
+  opacity: 0;
+  transform: translateY(var(--space-4));
+  visibility: hidden;
+  transition:
+    opacity 180ms ease,
+    transform 200ms ease,
+    visibility 0s linear 200ms;
+}
+
+.dockContainerHidden .dockPill {
+  pointer-events: none;
+}
+
+.dockPill {
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--glass-shadow);
+}
+
+.dockPill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--glass-highlight-top);
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .dockPill::before {
+    display: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .dockPill::before {
+    display: none;
+  }
+
+  .dockPill {
+    border-color: var(--ink-strong);
+  }
+}
+
+.dockLabel {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  color: var(--ink-strong);
+  white-space: nowrap;
+}
+
+.dockActions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.iconCirclePrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--btn-h-md);
+  height: var(--btn-h-md);
+  border-radius: 50%;
+  border: 1px solid var(--btn-primary-border);
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-ink);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    transform var(--duration-press) ease-out,
+    background-color var(--duration-hover) ease,
+    border-color var(--duration-hover) ease;
+}
+
+.iconCirclePrimary:hover {
+  background: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
+}
+
+.iconCirclePrimary:active {
+  transform: scale(var(--scale-press));
+}
+
+.iconCircleSuccess {
+  background: var(--status-success-bg);
+  border-color: var(--status-success-bg);
+  color: var(--status-success-ink);
+  box-shadow: 0 0 0 3px var(--status-available-ring);
+}
+
+.iconCircleSuccess:hover {
+  background: var(--status-success-hover);
+  border-color: var(--status-success-hover);
+}
+
+.dockIconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: dockIconPop 200ms var(--ease-spring);
+}
+
+@keyframes dockIconPop {
+  from {
+    opacity: 0.5;
+    transform: scale(0.84);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.iconCircleSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--btn-h-md);
+  height: var(--btn-h-md);
+  border-radius: 50%;
+  color: var(--ink-strong);
+  flex-shrink: 0;
+  transition:
+    border-color var(--duration-hover) ease,
+    background-color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.iconCircleSecondary:hover {
+  border-color: var(--glass-subtle-border-hover);
+  background: var(--glass-subtle-bg-hover);
+}
+
+.iconCircleSecondary:active {
+  transform: scale(var(--scale-press));
+}
+
+/* Hide completely on tablet & mobile so content and buttons are never obstructed */
+@media (max-width: 1023px) {
+  .dockContainer {
+    display: none;
+  }
+}

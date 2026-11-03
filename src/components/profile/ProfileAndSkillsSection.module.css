@@ -1,0 +1,441 @@
+.profileSkillsSection {
+  padding: var(--space-section) 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.aboutBlock {
+  margin-bottom: var(--space-7);
+}
+
+.sectionHeader {
+  margin-bottom: var(--space-6);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  line-height: var(--leading-h2);
+  letter-spacing: var(--tracking-headline);
+  color: var(--ink-strong);
+  max-width: 24ch;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 4.2fr 7.8fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.leftColumn {
+  position: sticky;
+  top: 6.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Concentric Radii: Outer 20px - 8px pad = 12px inner portrait frame (clean overflow: hidden, zero text collision) */
+.profileCard {
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+}
+
+.portraitFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3.8;
+  border-radius: var(--radius-card-inner);
+  overflow: hidden;
+}
+
+.portraitImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+}
+
+.profileBody {
+  padding: var(--space-4) var(--space-3) var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.profileName {
+  font-size: var(--text-h3);
+  font-weight: 800;
+  line-height: var(--leading-title);
+  letter-spacing: var(--tracking-title);
+  color: var(--accent-ink);
+}
+
+.profileRole {
+  font-size: var(--text-label);
+  font-weight: 500;
+  color: var(--ink-body);
+}
+
+.profileLocation {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.narrativeColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.rightGroupBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.groupHeading {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: var(--leading-title);
+  letter-spacing: var(--tracking-title);
+  color: var(--ink-strong);
+  margin-bottom: var(--space-4);
+}
+
+.cardGroupList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.eduCard {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition:
+    border-color var(--duration-hover) ease,
+    background-color var(--duration-hover) ease,
+    box-shadow var(--duration-settle) var(--ease-spring);
+}
+
+.eduCard:hover,
+.certCard:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.eduTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.eduDegree {
+  font-size: var(--text-title);
+  font-weight: 600;
+  line-height: var(--leading-title);
+  letter-spacing: var(--tracking-title);
+  color: var(--ink-strong);
+}
+
+.scoreBadge {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  color: var(--ink-strong);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.eduInst {
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--ink-body);
+}
+
+.eduPeriod {
+  font-size: var(--text-label);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+}
+
+.activityRow,
+.certCard {
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  transition:
+    border-color var(--duration-hover) ease,
+    background-color var(--duration-hover) ease,
+    box-shadow var(--duration-settle) var(--ease-spring);
+}
+
+.certMainRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.certTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.certIdText {
+  font-size: var(--text-micro);
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.certLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--btn-h-md);
+  padding: 0 var(--space-4);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.activityLabel {
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--ink-strong);
+}
+
+.activityMeta {
+  font-size: var(--text-micro);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+}
+
+/* Tech Stack Compact Chips */
+.techStackBlock {
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--border-hairline);
+}
+
+.skillGroupsStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.skillCategoryRow {
+  display: grid;
+  grid-template-columns: 12.5rem minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: baseline;
+}
+
+.skillCategoryLabel {
+  font-size: var(--text-micro);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--ink-muted);
+}
+
+.techChipsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.techChip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--btn-h-md);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-card-inner);
+  color: var(--ink-strong);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+}
+
+.techChipInteractive {
+  cursor: pointer;
+  transition:
+    border-color var(--duration-hover) ease,
+    background-color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.techChipInteractive:hover {
+  border-color: var(--glass-subtle-border-hover);
+  background: var(--glass-subtle-bg-hover);
+}
+
+.techChipInteractive:active {
+  transform: scale(var(--scale-press));
+}
+
+.techChipActive {
+  border-color: var(--accent-ink);
+  background: var(--accent-subtle-bg);
+}
+
+.techChipIcon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--ink-strong);
+}
+
+.focusBadge {
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--accent-subtle-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-ink);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.skillDetailNote {
+  margin-top: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-body);
+  color: var(--ink-body);
+  max-width: 65ch;
+}
+
+.skillDetailNote strong {
+  color: var(--ink-strong);
+}
+
+/* Supporting Skills Progressive Disclosure */
+.supportingMotionWrap {
+  margin-top: var(--space-6);
+}
+
+.supportingDisclosure {
+  margin-top: 0;
+}
+
+.supportingSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--btn-h-lg);
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  color: var(--ink-strong);
+  cursor: pointer;
+  list-style: none;
+}
+
+.supportingSummary:focus-visible {
+  outline-offset: -3px;
+  border-radius: var(--radius-card-outer);
+}
+
+.supportingSummary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosureChevron {
+  color: var(--ink-muted);
+  transition: transform 220ms var(--ease-spring);
+}
+
+.supportingDisclosure[open] .disclosureChevron {
+  transform: rotate(180deg);
+}
+
+.supportingGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  border-top: 1px solid var(--border-hairline);
+}
+
+.supportingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.supportingTitle {
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--ink-strong);
+}
+
+.supportingList {
+  padding-left: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--ink-body);
+}
+
+@media (max-width: 1023px) {
+  .leftColumn {
+    position: static;
+  }
+
+  .aboutGrid,
+  .supportingGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .skillCategoryRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .profileCard {
+    max-width: 24rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .profileCard {
+    max-width: 100%;
+  }
+
+  .eduCard,
+  .activityRow,
+  .certCard {
+    padding: var(--space-4);
+  }
+
+  .supportingSummary {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .supportingGrid {
+    padding: var(--space-4);
+  }
+}

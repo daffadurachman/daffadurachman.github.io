@@ -1,0 +1,391 @@
+:root {
+  /* ==========================================================================
+     1. BASE PALETTE PRIMITIVES (Single Source of Truth — zero literals elsewhere)
+     ========================================================================== */
+  --color-porcelain: #F2F0EB;
+  --color-card: #FAF9F6;
+  --color-warm-subtle: #EBE8E1;
+  --color-warm-track: #E3DFD7;
+  --color-border-light: #DFDDD7;
+
+  --color-charcoal: #2E2E30;
+  --color-slate: #4A4947;
+  --color-stone: #63615E;
+  --color-stone-dark: #9E9A93;
+  --color-porcelain-muted: #D4D0C8;
+  --color-taupe: #A89F91;
+
+  --color-burgundy: #6E2F36;
+  --color-burgundy-hover: #58242A;
+  --color-burgundy-dark-btn: #843841;
+  --color-burgundy-dark-btn-hover: #99434D;
+  --color-burgundy-rose: #D8727E;
+
+  --color-amoled-black: #000000;
+  --color-dark-card: #0A0A0C;
+  --color-dark-subtle: #121215;
+  --color-dark-elevated: #1A1A1F;
+  --color-dark-hover: #1D1D22;
+
+  --color-status-available: #21b30b;
+  --color-status-available-light: #198A08;
+  --color-status-success: #136B08;
+  --color-status-success-hover: #0F5606;
+  --color-status-success-dark: #167A09;
+  --color-status-success-dark-hover: #1B920C;
+
+  /* Alpha Derivations */
+  --color-charcoal-56: rgba(46, 46, 48, 0.56);
+  --color-charcoal-22: rgba(46, 46, 48, 0.22);
+  --color-charcoal-18: rgba(46, 46, 48, 0.18);
+  --color-charcoal-10: rgba(46, 46, 48, 0.10);
+  --color-charcoal-08: rgba(46, 46, 48, 0.08);
+  --color-charcoal-06: rgba(46, 46, 48, 0.06);
+  --color-charcoal-04: rgba(46, 46, 48, 0.04);
+
+  --color-porcelain-45: rgba(242, 240, 235, 0.45);
+  --color-porcelain-42: rgba(242, 240, 235, 0.42);
+  --color-porcelain-22: rgba(242, 240, 235, 0.22);
+  --color-porcelain-16: rgba(242, 240, 235, 0.16);
+  --color-porcelain-14: rgba(242, 240, 235, 0.14);
+  --color-porcelain-12: rgba(242, 240, 235, 0.12);
+  --color-porcelain-08: rgba(242, 240, 235, 0.08);
+
+  --color-card-94: rgba(250, 249, 246, 0.94);
+  --color-card-88: rgba(250, 249, 246, 0.88);
+  --color-dark-glass: rgba(10, 10, 12, 0.86);
+  --color-dark-header: rgba(10, 10, 12, 0.94);
+
+  --color-black-85: rgba(0, 0, 0, 0.85);
+  --color-black-82: rgba(0, 0, 0, 0.82);
+  --color-black-72: rgba(0, 0, 0, 0.72);
+  --color-black-65: rgba(0, 0, 0, 0.65);
+  --color-black-55: rgba(0, 0, 0, 0.55);
+  --color-black-38: rgba(0, 0, 0, 0.38);
+  --color-black-10: rgba(0, 0, 0, 0.1);
+
+  --color-white-80: rgba(255, 255, 255, 0.8);
+  --color-white-62: rgba(255, 255, 255, 0.62);
+  --color-white-60: rgba(255, 255, 255, 0.6);
+  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-white-48: rgba(255, 255, 255, 0.48);
+  --color-white-42: rgba(255, 255, 255, 0.42);
+  --color-white-36: rgba(255, 255, 255, 0.36);
+  --color-white-35: rgba(255, 255, 255, 0.35);
+  --color-white-30: rgba(255, 255, 255, 0.3);
+  --color-white-28: rgba(255, 255, 255, 0.28);
+  --color-white-24: rgba(255, 255, 255, 0.24);
+  --color-white-18: rgba(255, 255, 255, 0.18);
+  --color-white-16: rgba(255, 255, 255, 0.16);
+  --color-white-14: rgba(255, 255, 255, 0.14);
+  --color-white-10: rgba(255, 255, 255, 0.1);
+  --color-white-08: rgba(255, 255, 255, 0.08);
+  --color-white-06: rgba(255, 255, 255, 0.06);
+  --color-white-05: rgba(255, 255, 255, 0.05);
+  --color-white-04: rgba(255, 255, 255, 0.04);
+
+  --color-obsidian-48: rgba(20, 20, 24, 0.48);
+  --color-obsidian-56: rgba(20, 20, 24, 0.56);
+  --color-obsidian-62: rgba(26, 26, 32, 0.62);
+  --color-obsidian-74: rgba(28, 28, 34, 0.74);
+
+  --color-burgundy-24: rgba(110, 47, 54, 0.24);
+  --color-burgundy-14: rgba(110, 47, 54, 0.14);
+  --color-burgundy-08: rgba(110, 47, 54, 0.08);
+  --color-burgundy-dark-22: rgba(132, 56, 65, 0.22);
+  --color-burgundy-dark-16: rgba(132, 56, 65, 0.16);
+  --color-rose-45: rgba(216, 114, 126, 0.45);
+  --color-rose-36: rgba(216, 114, 126, 0.36);
+  --color-rose-16: rgba(216, 114, 126, 0.16);
+  --color-rose-12: rgba(216, 114, 126, 0.12);
+  --color-rose-10: rgba(216, 114, 126, 0.1);
+
+  --color-taupe-28: rgba(168, 159, 145, 0.28);
+  --color-taupe-22: rgba(168, 159, 145, 0.22);
+  --color-taupe-16: rgba(168, 159, 145, 0.16);
+
+  --color-green-light-ring: rgba(25, 138, 8, 0.22);
+  --color-green-light-ring-soft: rgba(25, 138, 8, 0.10);
+  --color-green-dark-ring: rgba(33, 179, 11, 0.24);
+  --color-green-dark-ring-soft: rgba(33, 179, 11, 0.12);
+
+  /* ==========================================================================
+     2. SEMANTIC THEME TOKENS — Warm Paper Editorial (Light Default)
+     ========================================================================== */
+  --surface-page: var(--color-porcelain);
+  --surface-card: var(--color-card);
+  --surface-subtle: var(--color-warm-subtle);
+  --surface-elevated: var(--color-warm-track);
+  --surface-skeleton: var(--color-taupe-16);
+  --portrait-bg: var(--surface-subtle);
+
+  --border-hairline: var(--color-border-light);
+  --border-strong: var(--color-charcoal);
+
+  --ink-strong: var(--color-charcoal);
+  --ink-body: var(--color-slate);
+  --ink-muted: var(--color-stone);
+
+  --accent-ink: var(--color-burgundy);
+  --accent-subtle-bg: var(--color-burgundy-08);
+  --accent-border: var(--color-burgundy-24);
+  --focus-ring-color: var(--color-burgundy);
+
+  /* Unified Primary Button System */
+  --btn-primary-bg: var(--color-burgundy);
+  --btn-primary-hover: var(--color-burgundy-hover);
+  --btn-primary-ink: var(--color-card);
+  --btn-primary-border: var(--color-burgundy);
+
+  /* Status & Feedback Signals */
+  --status-available-dot: var(--color-status-available-light);
+  --status-available-ring: var(--color-green-light-ring);
+  --status-available-ring-soft: var(--color-green-light-ring-soft);
+  --status-success-bg: var(--color-status-success);
+  --status-success-hover: var(--color-status-success-hover);
+  --status-success-ink: var(--color-card);
+
+  /* Translucent Glassmorphism Materials (3-Tier Apple HIG Hierarchy) */
+  --glass-bg: var(--color-white-35);
+  --glass-bg-hover: var(--color-white-48);
+  --glass-blur: blur(15px);
+  --glass-radius: 20px;
+  --glass-border: var(--color-white-30);
+  --glass-border-hover: var(--color-white-62);
+  --glass-shadow:
+    0 8px 32px var(--color-black-10),
+    inset 0 1px 0 var(--color-white-50),
+    inset 0 -1px 0 var(--color-white-10),
+    inset 0 0 10px 5px var(--color-white-50);
+  --glass-shadow-hover:
+    0 12px 38px var(--color-charcoal-18),
+    inset 0 1px 0 var(--color-white-80),
+    inset 0 -1px 0 var(--color-white-18),
+    inset 0 0 12px 5px var(--color-white-60);
+  --glass-highlight-top: linear-gradient(90deg, transparent, var(--color-white-80), transparent);
+  --glass-highlight-left: linear-gradient(180deg, var(--color-white-80), transparent, var(--color-white-30));
+  --glass-cursor-glow: var(--color-white-36);
+
+  /* Tier 2: Nested inner panels (zero nested backdrop-filter) */
+  --glass-subtle-bg: var(--color-white-35);
+  --glass-subtle-bg-hover: var(--color-white-60);
+  --glass-subtle-border: var(--color-charcoal-10);
+  --glass-subtle-border-hover: var(--color-charcoal-22);
+  --glass-subtle-shadow: inset 0 1px 0 var(--color-white-60);
+
+  /* Tier 3: Floating chrome & pills */
+  --glass-pill-bg: var(--color-white-42);
+  --glass-pill-bg-hover: var(--color-white-62);
+  --glass-pill-border: var(--color-white-50);
+  --glass-pill-border-hover: var(--color-charcoal-22);
+  --glass-pill-shadow:
+    0 6px 24px var(--color-charcoal-10),
+    inset 0 1px 0 var(--color-white-62),
+    inset 0 -1px 0 var(--color-white-14);
+
+  /* Footer AMOLED smoked dark glass pills (consistent across themes) */
+  --glass-dark-pill-bg: var(--color-white-06);
+  --glass-dark-pill-bg-hover: var(--color-white-14);
+  --glass-dark-pill-border: var(--color-white-16);
+  --glass-dark-pill-border-hover: var(--color-white-36);
+  --glass-dark-pill-shadow:
+    0 6px 24px var(--color-black-38),
+    inset 0 1px 0 var(--color-white-18),
+    inset 0 -1px 0 var(--color-white-05);
+
+  /* Ambient Editorial Canvas Washes (gives blur(15px) genuine tonal depth) */
+  --ambient-canvas-bg:
+    radial-gradient(ellipse 68% 54% at 86% 12%, var(--color-burgundy-14), transparent 64%),
+    radial-gradient(ellipse 62% 58% at 10% 42%, var(--color-taupe-28), transparent 66%),
+    radial-gradient(ellipse 58% 52% at 80% 80%, var(--color-rose-12), transparent 64%),
+    radial-gradient(ellipse 52% 44% at 22% 92%, var(--color-taupe-22), transparent 62%);
+  --footer-ambient-bg:
+    radial-gradient(ellipse 64% 58% at 84% 18%, var(--color-burgundy-dark-22), transparent 64%),
+    radial-gradient(ellipse 52% 48% at 14% 72%, var(--color-rose-10), transparent 62%);
+
+  --material-glass-bg: var(--glass-pill-bg);
+  --material-glass-border: var(--glass-pill-border);
+  --material-scrim: var(--color-charcoal-56);
+  --glass-hover-bg: var(--color-charcoal-06);
+  --glass-active-bg: var(--color-charcoal-10);
+  --glass-divider: var(--color-charcoal-10);
+  --glass-fallback-bg: var(--surface-card);
+  --glass-modal-bg: var(--color-card-88);
+  --modal-header-bg: var(--color-card-94);
+  --modal-header-border: var(--glass-subtle-border);
+  --modal-header-border-scrolled: var(--color-charcoal-18);
+  --blur-chrome: var(--glass-blur);
+
+  /* High-Contrast AMOLED Footer (consistent across both themes) */
+  --footer-bg: var(--color-amoled-black);
+  --footer-surface: var(--color-dark-subtle);
+  --footer-surface-hover: var(--color-dark-hover);
+  --footer-border: var(--color-porcelain-16);
+  --footer-border-strong: var(--color-porcelain-45);
+  --footer-ink-strong: var(--color-porcelain);
+  --footer-ink-body: var(--color-porcelain-muted);
+  --footer-ink-muted: var(--color-stone-dark);
+  --footer-heading-muted: var(--color-taupe);
+  --footer-wordmark: var(--color-burgundy-rose);
+  --footer-focus-ring: var(--color-porcelain);
+
+  /* Elevation — flat cards by default; valid, theme-aware floating shadows */
+  --shadow-none: none;
+  --shadow-floating-rest: 0 2px 12px var(--color-charcoal-06), 0 1px 2px var(--color-charcoal-04);
+  --shadow-floating-pill: 0 8px 28px var(--color-charcoal-10), 0 1px 3px var(--color-charcoal-06);
+  --shadow-sheet-thick: 0 24px 64px var(--color-charcoal-22), 0 4px 16px var(--color-charcoal-08);
+
+  /* ==========================================================================
+     3. TYPOGRAPHY SCALE (8 Unified Steps — Switzer + Source Serif 4 + SF Mono)
+     ========================================================================== */
+  --font-display: "Switzer", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Switzer", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-source-serif, "Source Serif 4"), Georgia, "Times New Roman", serif;
+  --font-mono: "SF Mono", "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+  --text-display: clamp(2.5rem, 4.2vw, 4rem);       /* 40–64px: Hero Name */
+  --text-h2: clamp(1.75rem, 3.2vw, 2.75rem);        /* 28–44px: Section H2 & Detail H1 */
+  --text-h3: clamp(1.25rem, 1.8vw, 1.5rem);         /* 20–24px: Tagline, Sub-headings */
+  --text-title: 1.125rem;                           /* 18px: Card titles, Roles */
+  --text-lead: clamp(1rem, 1.15vw, 1.125rem);       /* 16–18px: Hero editorial serif */
+  --text-body: 0.9375rem;                           /* 15px: Body paragraphs */
+  --text-label: 0.875rem;                           /* 14px: Buttons, Nav, Badges */
+  --text-micro: 0.75rem;                            /* 12px: Uppercase labels, tags (floor >= 12px) */
+
+  --leading-display: 1.02;
+  --leading-h2: 1.08;
+  --leading-title: 1.28;
+  --leading-body: 1.6;
+  --leading-label: 1.2;
+
+  --tracking-display: -0.035em;
+  --tracking-headline: -0.028em;
+  --tracking-title: -0.016em;
+  --tracking-label: -0.01em;
+  --tracking-body: 0em;
+  --tracking-caps: 0.045em;
+
+  /* ==========================================================================
+     4. SPACING, LAYOUT, RADII & MOTION (Strict 4px / 8px Rhythm)
+     ========================================================================== */
+  --space-1: 0.25rem;   /*  4px */
+  --space-2: 0.5rem;    /*  8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 3rem;      /* 48px */
+  --space-section: clamp(4rem, 6.8vw, 6.25rem);
+  --container-max: 76rem;
+  --container-px: clamp(1rem, 4vw, 3rem);
+
+  --tap-target-min: 2.75rem; /* 44px WCAG 2.5.5 touch floor */
+  --btn-h-md: 2.75rem;       /* 44px default & card buttons */
+  --btn-h-lg: 3rem;          /* 48px primary Hero/Footer/Detail CTAs */
+
+  /* Concentric Radii Law (R_inner = R_outer - padding) */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-card-outer: 20px;
+  --radius-card-inner: 12px;
+  --radius-media-inner: 16px;
+  --radius-lg: 16px;
+  --radius-nav: 32px;
+  --radius-pill: 9999px;
+
+  /* Unified Motion Contract */
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-press: 100ms;
+  --duration-hover: 160ms;
+  --duration-settle: 280ms;
+  --duration-reveal: 720ms;
+  --scale-press: 0.97;
+}
+
+/* ============================================================================
+   AMOLED PITCH-DARK THEME (Zero Raw Color Literals — 100% Primitive Aliases)
+   ============================================================================ */
+:root[data-theme='dark'] {
+  --surface-page: var(--color-amoled-black);
+  --surface-card: var(--color-dark-card);
+  --surface-subtle: var(--color-dark-subtle);
+  --surface-elevated: var(--color-dark-elevated);
+  --surface-skeleton: var(--color-porcelain-08);
+
+  --border-hairline: var(--color-porcelain-14);
+  --border-strong: var(--color-porcelain-42);
+
+  --ink-strong: var(--color-porcelain);
+  --ink-body: var(--color-porcelain-muted);
+  --ink-muted: var(--color-stone-dark);
+
+  --accent-ink: var(--color-burgundy-rose);
+  --accent-subtle-bg: var(--color-rose-16);
+  --accent-border: var(--color-rose-36);
+  --focus-ring-color: var(--color-burgundy-rose);
+
+  --btn-primary-bg: var(--color-burgundy-dark-btn);
+  --btn-primary-hover: var(--color-burgundy-dark-btn-hover);
+  --btn-primary-border: var(--color-rose-45);
+
+  --status-available-dot: var(--color-status-available);
+  --status-available-ring: var(--color-green-dark-ring);
+  --status-available-ring-soft: var(--color-green-dark-ring-soft);
+  --status-success-bg: var(--color-status-success-dark);
+  --status-success-hover: var(--color-status-success-dark-hover);
+
+  --glass-bg: var(--color-obsidian-48);
+  --glass-bg-hover: var(--color-obsidian-62);
+  --glass-border: var(--color-white-14);
+  --glass-border-hover: var(--color-white-28);
+  --glass-shadow:
+    0 8px 32px var(--color-black-55),
+    inset 0 1px 0 var(--color-white-18),
+    inset 0 -1px 0 var(--color-white-06),
+    inset 0 0 10px 5px var(--color-white-04);
+  --glass-shadow-hover:
+    0 14px 40px var(--color-black-72),
+    inset 0 1px 0 var(--color-white-28),
+    inset 0 -1px 0 var(--color-white-10),
+    inset 0 0 12px 5px var(--color-white-06);
+  --glass-highlight-top: linear-gradient(90deg, transparent, var(--color-white-28), transparent);
+  --glass-highlight-left: linear-gradient(180deg, var(--color-white-24), transparent, var(--color-white-08));
+  --glass-cursor-glow: var(--color-white-08);
+
+  --glass-subtle-bg: var(--color-white-05);
+  --glass-subtle-bg-hover: var(--color-white-10);
+  --glass-subtle-border: var(--color-white-10);
+  --glass-subtle-border-hover: var(--color-white-24);
+  --glass-subtle-shadow: inset 0 1px 0 var(--color-white-14);
+
+  --glass-pill-bg: var(--color-obsidian-56);
+  --glass-pill-bg-hover: var(--color-obsidian-74);
+  --glass-pill-border: var(--color-white-16);
+  --glass-pill-border-hover: var(--color-white-28);
+  --glass-pill-shadow:
+    0 8px 28px var(--color-black-55),
+    inset 0 1px 0 var(--color-white-18),
+    inset 0 -1px 0 var(--color-white-05);
+
+  --ambient-canvas-bg:
+    radial-gradient(ellipse 66% 52% at 86% 12%, var(--color-burgundy-dark-22), transparent 64%),
+    radial-gradient(ellipse 60% 56% at 10% 42%, var(--color-charcoal-22), transparent 66%),
+    radial-gradient(ellipse 58% 52% at 80% 82%, var(--color-rose-10), transparent 64%),
+    radial-gradient(ellipse 50% 44% at 24% 92%, var(--color-burgundy-dark-16), transparent 62%);
+
+  --material-glass-bg: var(--glass-pill-bg);
+  --material-glass-border: var(--glass-pill-border);
+  --material-scrim: var(--color-black-82);
+  --glass-hover-bg: var(--color-porcelain-08);
+  --glass-active-bg: var(--color-porcelain-16);
+  --glass-divider: var(--color-porcelain-12);
+  --glass-modal-bg: var(--color-dark-glass);
+  --modal-header-bg: var(--color-dark-header);
+  --modal-header-border: var(--color-porcelain-12);
+  --modal-header-border-scrolled: var(--color-porcelain-22);
+
+  --shadow-floating-rest: 0 4px 16px var(--color-black-65);
+  --shadow-floating-pill: 0 12px 32px var(--color-black-72);
+  --shadow-sheet-thick: 0 28px 72px var(--color-black-85), 0 4px 16px var(--color-black-65);
+}

@@ -1,0 +1,101 @@
+.copyWrapper {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--btn-h-lg);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition:
+    transform var(--duration-press) ease-out,
+    background-color var(--duration-hover) ease,
+    border-color var(--duration-hover) ease,
+    color var(--duration-hover) ease;
+}
+
+.copyBtn:active {
+  transform: scale(var(--scale-press));
+}
+
+.copyIconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: copyIconPop 200ms var(--ease-spring);
+}
+
+@keyframes copyIconPop {
+  from {
+    opacity: 0.5;
+    transform: scale(0.84);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.copyLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Primary CTA on dark Footer uses Burgundy accent */
+.copyBtnLight,
+.copyBtnDark {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-ink);
+  border: 1px solid var(--btn-primary-border);
+}
+
+.copyBtnLight:hover,
+.copyBtnDark:hover {
+  background: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
+}
+
+.copyBtnLight:focus-visible {
+  outline: 2px solid var(--footer-focus-ring);
+  outline-offset: 3px;
+}
+
+.copyBtnCopied {
+  background: var(--status-success-bg);
+  border-color: var(--status-success-bg);
+  color: var(--status-success-ink);
+  box-shadow: 0 0 0 3px var(--status-available-ring);
+}
+
+.copyBtnCopied:hover {
+  background: var(--status-success-hover);
+  border-color: var(--status-success-hover);
+}
+
+.srStatus {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

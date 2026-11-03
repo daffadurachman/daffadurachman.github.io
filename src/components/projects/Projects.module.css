@@ -1,0 +1,360 @@
+.projectsSection {
+  padding: var(--space-section) 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.sectionTopRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.sectionHeader {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  line-height: var(--leading-h2);
+  letter-spacing: var(--tracking-headline);
+  max-width: 24ch;
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: 0;
+}
+
+.filterPill {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--btn-h-md);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  color: var(--ink-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-hover) ease,
+    background-color var(--duration-hover) ease,
+    color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.filterPillLabel {
+  position: relative;
+  z-index: 1;
+}
+
+.filterActiveBg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--btn-primary-bg);
+  border: 1px solid var(--btn-primary-border);
+  z-index: 0;
+}
+
+.filterPill:not(.filterPillActive):hover {
+  border-color: var(--glass-pill-border-hover);
+  background: var(--glass-pill-bg-hover);
+  color: var(--ink-strong);
+}
+
+.filterPill:active {
+  transform: scale(var(--scale-press));
+}
+
+.filterPillActive {
+  background: transparent;
+  color: var(--btn-primary-ink);
+  border: 1px solid transparent;
+}
+
+.filterPillActive:hover .filterActiveBg {
+  background: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  width: 100%;
+  align-items: stretch;
+}
+
+/* Concentric Radii: Outer 20px - 4px pad = 16px inner image frame */
+/* Motion owns outer card transform; CSS keeps material border, tint, shadow, and inner image zoom */
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-1);
+  transition:
+    border-color var(--duration-hover) ease,
+    background-color var(--duration-hover) ease,
+    box-shadow var(--duration-settle) var(--ease-spring);
+}
+
+.projectCard:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.projectCard:focus-within {
+  border-color: var(--focus-ring-color);
+}
+
+.cardImageLink {
+  display: block;
+  border-radius: var(--radius-media-inner);
+  overflow: hidden;
+  border: 1px solid var(--glass-subtle-border);
+}
+
+.cardImageLink:focus-visible {
+  outline-offset: -2px;
+}
+
+.cardImageFrame {
+  aspect-ratio: 16 / 10 !important;
+  border-radius: var(--radius-media-inner);
+  background: var(--surface-subtle);
+}
+
+.cardImage {
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 320ms var(--ease-spring);
+}
+
+.projectCard:hover .cardImage {
+  transform: scale(1.02);
+}
+
+.cardBody {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.cardMetaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.statusInlineBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-strong);
+}
+
+.statusCompletedDot {
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  background: var(--status-available-dot);
+  flex-shrink: 0;
+}
+
+.yearLabel {
+  font-size: var(--text-micro);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+}
+
+.featuredYearBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--btn-primary-bg);
+  border: 1px solid var(--btn-primary-border);
+  color: var(--btn-primary-ink);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.cardTitle {
+  font-size: var(--text-title);
+  font-weight: 600;
+  line-height: var(--leading-title);
+  letter-spacing: var(--tracking-title);
+  color: var(--ink-strong);
+}
+
+.cardSummary {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-body);
+}
+
+.cardFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-4);
+  padding-top: var(--space-2);
+  margin-top: auto;
+}
+
+.techTagList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.techTag {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-xs);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  color: var(--ink-strong);
+}
+
+.cardActionsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.liveDemoMiniBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: var(--btn-h-md);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--btn-primary-bg);
+  border: 1px solid var(--btn-primary-border);
+  color: var(--btn-primary-ink);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-hover) ease,
+    border-color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.liveDemoMiniBtn:hover {
+  background: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
+}
+
+.liveDemoMiniBtn:active {
+  transform: scale(var(--scale-press));
+}
+
+.detailLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: var(--btn-h-md);
+  padding: 0 var(--space-4);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  white-space: nowrap;
+}
+
+/* Case Study Media Block — Concentric Radii: Outer 20px - 4px pad = 16px inner */
+.mediaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.mediaGridFull {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.mediaGridTwoCol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.mediaImageWrapper {
+  padding: var(--space-1);
+}
+
+.mediaProgressiveFrame {
+  border-radius: var(--radius-media-inner);
+  background: var(--surface-subtle);
+  max-height: 34rem;
+}
+
+.mediaImage {
+  width: 100%;
+  height: 100%;
+  max-height: 34rem;
+  object-fit: contain;
+  border-radius: var(--radius-media-inner);
+  background: var(--surface-card);
+}
+
+.mediaCaption {
+  font-size: var(--text-label);
+  line-height: var(--leading-body);
+  color: var(--ink-muted);
+  text-align: center;
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+@media (max-width: 1023px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mediaGridTwoCol {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardBody {
+    padding: var(--space-4);
+  }
+}

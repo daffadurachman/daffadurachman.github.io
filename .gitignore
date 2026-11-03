@@ -1,0 +1,41 @@
+# Dependencies & Build Outputs
+node_modules/
+.next/
+.next-dev/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+
+# AI Harnesses, Agent Configs & Skill Directories
+.antigravity/
+.agent/
+.agents/
+.claude/
+.cursor/
+.freebuff/
+.gemini/
+.impeccable/
+.superpowers/
+ai-setup/
+ai-*
+prompts/
+
+# Internal Notes, Specs, Plans & Draft Markdown (Keep only root README.md and public/docs/)
+/docs/
+!public/docs/
+DESIGN.md
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+PRODUCT.md
+id-cv-*.md
+*.draft.md
+*.plan.md
+*.spec.md
+
+# Root duplicate PDF (served copy lives in public/docs/)
+/CV_Daffa_Hanif_Durachman_ID_Edited.pdf

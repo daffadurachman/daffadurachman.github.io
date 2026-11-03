@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" fill="none">
+  <!-- Dark-neutral editorial backdrop: works cleanly on both Warm Paper light cards and AMOLED dark cards -->
+  <rect width="800" height="500" fill="#111114"/>
+
+  <!-- Subtle architectural grid lines -->
+  <line x1="0" y1="88" x2="800" y2="88" stroke="#F2F0EB" stroke-opacity="0.10" stroke-width="1"/>
+  <line x1="0" y1="382" x2="800" y2="382" stroke="#F2F0EB" stroke-opacity="0.10" stroke-width="1"/>
+
+  <!-- Header row -->
+  <text x="44" y="42" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="0.08em">APACHE SPARK MLLIB · BIG DATA</text>
+  <text x="44" y="68" fill="#F2F0EB" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.02em">Komparasi 4 Model Klasifikasi Klinis</text>
+
+  <rect x="612" y="28" width="144" height="32" rx="16" fill="#6E2F36" stroke="#D8727E" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="684" y="49" text-anchor="middle" fill="#FAF9F6" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="13" font-weight="600">AUC 0.8100</text>
+
+  <!-- Main visual: clean horizontal benchmark bars (readable at 400px card width, zero text overflow) -->
+  <!-- Row 1: XGBoost -->
+  <text x="44" y="138" fill="#F2F0EB" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="18" font-weight="600">XGBoost</text>
+  <text x="756" y="138" text-anchor="end" fill="#D8727E" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="17" font-weight="600">74.00% · 0.8100</text>
+  <rect x="44" y="152" width="712" height="16" rx="8" fill="#1D1D22"/>
+  <rect x="44" y="152" width="577" height="16" rx="8" fill="#D8727E"/>
+
+  <!-- Row 2: GBT -->
+  <text x="44" y="206" fill="#D4D0C8" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="17" font-weight="500">Gradient-Boosted Trees</text>
+  <text x="756" y="206" text-anchor="end" fill="#D4D0C8" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="16" font-weight="500">72.89% · 0.8083</text>
+  <rect x="44" y="220" width="712" height="14" rx="7" fill="#1D1D22"/>
+  <rect x="44" y="220" width="574" height="14" rx="7" fill="#A89F91"/>
+
+  <!-- Row 3: Random Forest -->
+  <text x="44" y="272" fill="#D4D0C8" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="17" font-weight="500">Random Forest</text>
+  <text x="756" y="272" text-anchor="end" fill="#9E9A93" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="16" font-weight="500">71.06% · 0.7891</text>
+  <rect x="44" y="286" width="712" height="14" rx="7" fill="#1D1D22"/>
+  <rect x="44" y="286" width="560" height="14" rx="7" fill="#A89F91" fill-opacity="0.65"/>
+
+  <!-- Row 4: Naive Bayes -->
+  <text x="44" y="338" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="17" font-weight="500">Naive Bayes</text>
+  <text x="756" y="338" text-anchor="end" fill="#9E9A93" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="16" font-weight="500">64.02% · 0.4104</text>
+  <rect x="44" y="352" width="712" height="14" rx="7" fill="#1D1D22"/>
+  <rect x="44" y="352" width="292" height="14" rx="7" fill="#63615E"/>
+
+  <!-- Bottom 3 KPI strips -->
+  <text x="44" y="420" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="0.06em">DATASET KLINIS</text>
+  <text x="44" y="454" fill="#F2F0EB" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="26" font-weight="700" letter-spacing="-0.02em">991.346 Baris</text>
+
+  <line x1="296" y1="406" x2="296" y2="464" stroke="#F2F0EB" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="328" y="420" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="0.06em">FITUR MEDIS</text>
+  <text x="328" y="454" fill="#F2F0EB" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="26" font-weight="700" letter-spacing="-0.02em">24 Variabel</text>
+
+  <line x1="548" y1="406" x2="548" y2="464" stroke="#F2F0EB" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="580" y="420" fill="#9E9A93" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="0.06em">EVALUASI</text>
+  <text x="580" y="454" fill="#D8727E" font-family="'Switzer', 'Inter', system-ui, sans-serif" font-size="26" font-weight="700" letter-spacing="-0.02em">Grade A</text>
+</svg>

@@ -1,0 +1,47 @@
+.localeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-height: var(--btn-h-md);
+  min-width: var(--tap-target-min);
+  padding: 0 0.65rem;
+  border-radius: var(--radius-pill);
+  color: var(--ink-strong);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    border-color var(--duration-hover) ease,
+    background-color var(--duration-hover) ease,
+    color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.localeBtn:hover {
+  border-color: var(--glass-subtle-border-hover);
+  background: var(--glass-subtle-bg-hover);
+}
+
+.localeBtn:active {
+  transform: scale(var(--scale-press));
+}
+
+.globeIcon {
+  color: var(--ink-muted);
+  flex-shrink: 0;
+}
+
+.localeCode {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+@media (max-width: 767px) {
+  .localeBtn {
+    min-height: var(--tap-target-min);
+    padding: 0 0.6rem;
+  }
+}

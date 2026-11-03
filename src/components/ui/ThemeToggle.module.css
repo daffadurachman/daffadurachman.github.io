@@ -1,0 +1,75 @@
+.toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--btn-h-md);
+  height: var(--btn-h-md);
+  min-width: var(--btn-h-md);
+  min-height: var(--btn-h-md);
+  border-radius: 50%;
+  border: 1px solid var(--glass-subtle-border);
+  background: var(--glass-subtle-bg);
+  box-shadow: var(--glass-subtle-shadow);
+  color: var(--ink-strong);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background-color var(--duration-hover) ease,
+    border-color var(--duration-hover) ease,
+    color var(--duration-hover) ease,
+    transform var(--duration-press) ease-out;
+}
+
+.toggleBtn:hover {
+  background: var(--glass-subtle-bg-hover);
+  border-color: var(--glass-subtle-border-hover);
+}
+
+.toggleBtn:active {
+  transform: scale(var(--scale-press));
+}
+
+.orbitalSvg {
+  display: block;
+  overflow: visible;
+}
+
+.orbitalCore {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 420ms var(--ease-spring);
+}
+
+.eclipseCutout {
+  transition: transform 420ms var(--ease-spring);
+}
+
+.orbitalRays {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 380ms var(--ease-spring),
+    opacity 220ms ease;
+}
+
+/* Drive visual icon state directly from html[data-theme] so pre-hydration paint never flashes */
+:global(html[data-theme='dark']) .orbitalCore {
+  transform: scale(1.42);
+}
+
+:global(html[data-theme='dark']) .eclipseCutout {
+  transform: translate(-5.8px, 6.2px);
+}
+
+:global(html[data-theme='dark']) .orbitalRays {
+  transform: rotate(45deg) scale(0.35);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbitalCore,
+  .eclipseCutout,
+  .orbitalRays {
+    transition: none;
+  }
+}
