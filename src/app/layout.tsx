@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import '@/styles/globals.css';
 import { PROFILE_DATA } from '@/data/profile';
 import { SmoothScrollProvider } from '@/components/layout/SmoothScrollProvider';
@@ -54,7 +55,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const cfBeaconToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN?.trim();
 
   const personJsonLd = {
     '@context': 'https://schema.org',
@@ -93,18 +94,14 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
-        {gaMeasurementId ? (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${gaMeasurementId}');`,
-              }}
-            />
-          </>
+        {cfBeaconToken ? (
+          <Script
+            id="cf-web-analytics"
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            strategy="afterInteractive"
+            defer
+            data-cf-beacon={JSON.stringify({ token: cfBeaconToken, spa: true })}
+          />
         ) : null}
         <SmoothScrollProvider />
         <GlassSpotlightProvider />

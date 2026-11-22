@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import ts from 'typescript';
 
 function read(filePath) {
   return fs.readFileSync(filePath, 'utf8');
@@ -376,5 +377,141 @@ test('GitHub Pages deployment workflow and canonical daffadurachman.github.io UR
     'actions/deploy-pages@v4',
   ]) {
     assert.ok(workflow.includes(snippet), `.github/workflows/deploy.yml missing required directive: ${snippet}`);
+  }
+});
+
+test('Cloudflare Web Analytics integration is zero-cookie, env-guarded, and SSR-safe', async () => {
+  const layoutTsx = read('src/app/layout.tsx');
+  assert.ok(layoutTsx.includes("from 'next/script'"), 'layout.tsx must import Script from next/script');
+  assert.ok(layoutTsx.includes('NEXT_PUBLIC_CF_BEACON_TOKEN'), 'layout.tsx must guard beacon on NEXT_PUBLIC_CF_BEACON_TOKEN');
+  assert.ok(
+    layoutTsx.includes('https://static.cloudflareinsights.com/beacon.min.js'),
+    'layout.tsx must load Cloudflare Web Analytics beacon.min.js'
+  );
+  assert.ok(layoutTsx.includes('strategy="afterInteractive"'), 'layout.tsx must use afterInteractive loading strategy');
+  assert.ok(layoutTsx.includes('data-cf-beacon'), 'layout.tsx must pass data-cf-beacon attribute');
+  assert.ok(layoutTsx.includes('spa: true'), 'layout.tsx must enable SPA route tracking in data-cf-beacon');
+  assert.ok(!layoutTsx.includes('googletagmanager.com/gtag/js'), 'layout.tsx must not retain cookie-based gtag.js');
+
+  const outHtml = read('out/index.html');
+  if (process.env.NEXT_PUBLIC_CF_BEACON_TOKEN?.trim()) {
+    assert.ok(
+      outHtml.includes('static.cloudflareinsights.com/beacon.min.js'),
+      'out/index.html must reference beacon.min.js when NEXT_PUBLIC_CF_BEACON_TOKEN is set'
+    );
+  } else {
+    assert.ok(
+      !outHtml.includes('static.cloudflareinsights.com/beacon.min.js') && !outHtml.includes('data-cf-beacon'),
+      'out/index.html must omit Cloudflare beacon when NEXT_PUBLIC_CF_BEACON_TOKEN is unset'
+    );
+  }
+
+  const transpiled = ts.transpileModule(read('src/lib/analytics.ts'), {
+    compilerOptions: {
+      module: ts.ModuleKind.ESNext,
+      target: ts.ScriptTarget.ES2022,
+    },
+  }).outputText;
+
+  const analyticsModule = await import(
+    `data:text/javascript;base64,${Buffer.from(transpiled, 'utf8').toString('base64')}`
+  );
+  const { isAnalyticsEnabled, trackEvent, trackDownloadCV, trackExternalLink, withBasePath } = analyticsModule;
+
+  const prevToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
+  const prevBasePath = process.env.NEXT_PUBLIC_BASE_PATH;
+  const hadWindow = Object.prototype.hasOwnProperty.call(globalThis, 'window');
+  const prevWindow = globalThis.window;
+
+  try {
+    // 1. SSR / headless without token
+    delete process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
+    delete globalThis.window;
+    assert.equal(isAnalyticsEnabled(), false);
+    assert.equal(trackEvent('page_view'), false);
+    assert.equal(trackDownloadCV('modal'), false);
+    assert.equal(trackExternalLink('https://github.com/daffahanif6'), false);
+
+    // 2. SSR / headless with token still safely no-ops
+    process.env.NEXT_PUBLIC_CF_BEACON_TOKEN = 'cf-test-token';
+    assert.equal(isAnalyticsEnabled(), true);
+    assert.equal(trackEvent('page_view'), false);
+    assert.equal(trackDownloadCV('modal'), false);
+    assert.equal(trackExternalLink('https://github.com/daffahanif6'), false);
+
+    // 3. Browser window with undefined or whitespace-only token
+    const dispatched = [];
+    globalThis.window = {
+      dispatchEvent(event) {
+        dispatched.push(event);
+        return true;
+      },
+    };
+
+    delete process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
+    assert.equal(isAnalyticsEnabled(), false);
+    assert.equal(trackEvent('custom_click'), false);
+    assert.equal(trackDownloadCV('modal'), false);
+    assert.equal(trackExternalLink('https://github.com/daffahanif6'), false);
+
+    process.env.NEXT_PUBLIC_CF_BEACON_TOKEN = '   ';
+    assert.equal(isAnalyticsEnabled(), false);
+    assert.equal(trackEvent('custom_click'), false);
+    assert.equal(trackDownloadCV('modal'), false);
+    assert.equal(trackExternalLink('https://github.com/daffahanif6'), false);
+    assert.equal(dispatched.length, 0);
+
+    // 4. Browser window with valid token dispatches expected zero-cookie CustomEvents
+    process.env.NEXT_PUBLIC_CF_BEACON_TOKEN = 'cf-test-token';
+    assert.equal(isAnalyticsEnabled(), true);
+    assert.equal(trackEvent('custom_click', { count: 1 }), true);
+    assert.equal(trackDownloadCV('modal'), true);
+    assert.equal(trackExternalLink('https://github.com/daffahanif6', 'GitHub', 'footer'), true);
+    assert.equal(trackEvent('   '), false);
+    assert.equal(trackExternalLink('   '), false);
+    assert.equal(dispatched.length, 3);
+
+    assert.equal(dispatched[0].type, 'portfolio:analytics');
+    assert.deepEqual(dispatched[0].detail, { name: 'custom_click', params: { count: 1 } });
+    assert.equal(dispatched[1].type, 'portfolio:analytics');
+    assert.deepEqual(dispatched[1].detail, { name: 'cv_download_click', params: { source: 'modal' } });
+    assert.equal(dispatched[2].type, 'portfolio:analytics');
+    assert.deepEqual(dispatched[2].detail, {
+      name: 'external_link_click',
+      params: { url: 'https://github.com/daffahanif6', label: 'GitHub', location: 'footer' },
+    });
+
+    // 5. Failing dispatchEvent never interrupts caller
+    globalThis.window = {
+      dispatchEvent() {
+        throw new Error('Blocked by environment');
+      },
+    };
+    assert.equal(trackEvent('custom_click'), false);
+    assert.equal(trackDownloadCV('modal'), false);
+    assert.equal(trackExternalLink('https://github.com/daffahanif6'), false);
+
+    // 6. withBasePath regression check
+    delete process.env.NEXT_PUBLIC_BASE_PATH;
+    assert.equal(withBasePath('/docs/cv.pdf'), '/docs/cv.pdf');
+    process.env.NEXT_PUBLIC_BASE_PATH = '/portfolio';
+    assert.equal(withBasePath('/docs/cv.pdf'), '/portfolio/docs/cv.pdf');
+    assert.equal(withBasePath('https://example.com'), 'https://example.com');
+  } finally {
+    if (prevToken === undefined) {
+      delete process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
+    } else {
+      process.env.NEXT_PUBLIC_CF_BEACON_TOKEN = prevToken;
+    }
+    if (prevBasePath === undefined) {
+      delete process.env.NEXT_PUBLIC_BASE_PATH;
+    } else {
+      process.env.NEXT_PUBLIC_BASE_PATH = prevBasePath;
+    }
+    if (hadWindow) {
+      globalThis.window = prevWindow;
+    } else {
+      delete globalThis.window;
+    }
   }
 });
